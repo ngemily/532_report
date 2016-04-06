@@ -59,35 +59,26 @@ surface contains pixels that are very similar to each other whereas pixels along
 edges show a high level of difference, or gradient, along the direction of the
 edge.
 
-$$
-G_y = 
-\left(
-\begin{matrix}
-    -3 & -10 & -3 \\
-     0 &   0 &  0 \\
-    +3 & +10 & +3
-\end{matrix}
-\right)
-\ast
-A
-$$
-
-$$
-G_x =
-\left(
-\begin{matrix}
-     -3 & 0 &  +3 \\
-    -10 & 0 & +10 \\
-     -3 & 0 &  +3
-\end{matrix}
-\right)
-\ast
-A
-$$
-
-$$
-G = \left|G_x\right| + \left|G_y\right|
-$$
+\begin{subequations}
+\begin{align}
+    G_y &=
+        \begin{bmatrix}
+            -3 & -10 & -3 \\
+             0 &   0 &  0 \\
+            +3 & +10 & +3
+        \end{bmatrix}
+        \ast A\\
+    G_x &=
+        \begin{bmatrix}
+             -3 & 0 &  +3 \\
+            -10 & 0 & +10 \\
+             -3 & 0 &  +3
+        \end{bmatrix}
+        \ast A \\
+    G &= \left|G_x\right| + \left|G_y\right|
+\end{align}
+\label{eq:sobel}
+\end{subequations}
 
 ##### Grayscale
 
