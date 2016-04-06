@@ -5,9 +5,8 @@ Challenges
 
 The biggest challenge I faced was the shift in mindset from software to
 hardware.  This is the largest hardware project I have ever taken on, and
-although I would not consider myself to be "experienced" per se in either, I
-have had much more time to develop a mental model for writing imperative,
-procedural software.
+although I would not consider myself to be in expert in either, I have had much
+more time to develop a mental model for writing imperative, procedural software.
 
 I've come to realize that there are two assumptions that I make every day that I
 don't even think about when writing software:
@@ -20,41 +19,43 @@ available on the next line.  As I write my verilog, I need to always think
 instead about what circuit I am describing.  I need to consider that
 combinational logic happens all at once, in parallel.  I need to consider that
 results that pass through registers are not available until the following clock
-cyle, and I may need to line things up.  Now, I know that in reality CPUs are
-registers with combinational logic blocks in between them, but software writing
-has these complications abstracted away by having an ISA to act as a contract
-between hardware and software.
+cycle, and I may need to line things up.  
+
+In reality CPUs have all the same limitations except that they are all hidden
+behind the ISA.  This contract allows the programmer to safely write software
+under these assumptions while the CPU architecture is free to finely schedule
+these operations of various latencies.
 
 The best tool that I had here was drawing out diagrams before writing my Verilog
 and checking the schematic in Vivado after writing my Verilog.  By consciously
 making this effort, it became not hard in not too long to figure out how to
 implement most of my software in hardware.
 
-### Timing Closure
+### Timing Closure and Pipelining
 
-I soon ran into timing violations, to which the answer was always to register
-and pipeline.  I'm lucky to have known to set clock constraints and report
-timing on the IP I was writing without compiling the whole block design.  This
-allowed me to quickly diagnose critical paths and rarely hit timing issues in
-hardware.  I had on one occaision neglected to check the timing report and ended
-up with a completely broken bitstream.
+As I started designing our video processing IP, I soon ran into timing
+violations, to which the answer was always to register and pipeline.  It took a
+considerable amount of time that I didn't account for in the original project
+timeline to deal with timing closure.
 
-
-### Pipelining
-
-I initially wrestled with how to insert pipelining into my Verilog in a sane
-manner.  I quickly began to develop a skill for drawing pipeline diagrams.  This
-experience further developed my understanding of sequential and combinational
-logic, as well as timing logic to line up in a given cycle.  Looking at
-simulations was key to debugging some early bugs here, and understanding again
-how registers work.
-
-### Integration
-
-Integration went as smoothly as I could have hoped for.  Most of my work was
-integrated into the team's in one week.  My stuff worked almost out of box
-thanks to the confidence I had through simulation.
-
+I initially wrestled with how to insert systematically pipeline my design and
+how to think about the data flow and dependencies in my design.  I quickly
+developed a habit of drawing pipeline diagrams.  This experience further
+developed my understanding of sequential and combinational logic, as well as
+timing logic to line up in a given cycle.
 
 ### Noise
 
+The real environment proved to be much more challenging than I had anticipated.
+As a team, we scoped out our project such that we would control the environment
+by having a plain monochrome background with some crisp images projected onto
+it.  Unfortunately, lighting and camera quality made what we had hoped to be an
+"easy" environment quite noisy.
+
+It was especially hard because as we tried to deal with the noise, we would
+break up the outlines of our objects.  Our design depends on the objects that we
+are detecting to show up as a connected outline.  If it broke up into two, it
+would be detected as two objects.  However, if there was too much noise it would
+end up connected two objects that are in fact separate.  This lead to a constant
+trade-off between rejecting noise and not being so aggressive as to break up the
+outlines.
