@@ -1,0 +1,11 @@
+src/*.tex
+*.aux
+main.bbl
+main.bcf
+main.blg
+main.lof
+main.log
+main.out
+main.pdf
+main.run.xml
+main.toc

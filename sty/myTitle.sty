@@ -1,0 +1,30 @@
+\ProvidesPackage{columbidaeTitle}
+\newcommand*{\project}[1]{\gdef\@project{#1}}
+\newcommand*{\@project}{Engineering Science Undergraduate Thesis}
+\newcommand*{\studentNo}[1]{\gdef\@studentNo{#1}}
+\newcommand*{\@studentNo}{999007024}
+
+\renewcommand*{\maketitle}{
+\begin{titlepage}
+    \centering
+
+    {\scshape\LARGE University of Toronto \par}
+    \vspace{1cm}
+
+    {\scshape\Large\@project\unskip\strut\par}
+    \vspace{1.5cm}
+
+    {\huge\bfseries\@title\unskip\strut\par}
+    \vspace{2cm}
+
+    {\Large\itshape\@author\unskip\strut\par}
+    {\Large\@studentNo\unskip\strut\par}
+    \vfill
+
+    Group 3\par
+    \vfill
+
+    {\large \@date\par}
+\end{titlepage}
+}
+\endinput
