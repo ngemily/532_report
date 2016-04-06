@@ -16,12 +16,18 @@ header-includes:
     - \addbibresource{bib/main.bib}
 ---
 
+\frontmatter
+
+\tableofcontents
 \listoffigures
+\include{acknowledgements}
 
-Acknowledgements
-================
-
+\mainmatter
 \include{me}
-\include{rest}
+\include{reflection}
+\include{community}
+\include{xilinx}
+\include{course}
 
+\backmatter
 \printbibliography[heading=bibintoc]
