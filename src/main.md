@@ -16,6 +16,8 @@ header-includes:
     - \addbibresource{bib/main.bib}
 ---
 
+\renewcommand{\bibname}{References}
+
 \frontmatter
 
 \tableofcontents
