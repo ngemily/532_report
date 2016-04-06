@@ -19,10 +19,10 @@ header-includes:
 \renewcommand{\bibname}{References}
 
 \frontmatter
+\include{acknowledgements}
 
 \tableofcontents
 \listoffigures
-\include{acknowledgements}
 
 \mainmatter
 \include{me}
@@ -36,8 +36,20 @@ header-includes:
 \include{course}
 
 \appendix
+
+# Sample image processing output
 \include{sw}
 \include{sim}
+
+# Workflow scripts
+\include{do}
+\include{tcl}
+
+# Schematics
+\includegraphics{schematics/cc.pdf}
+\includegraphics{schematics/moment_generator.pdf}
+\includegraphics{schematics/sobel.pdf}
+\includegraphics{schematics/top.pdf}
 
 \backmatter
 \printbibliography[heading=bibintoc]

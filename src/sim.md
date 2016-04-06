@@ -1,5 +1,5 @@
 Simulation results
-==================
+------------------
 
 \begin{figure}[htbp]
     \centering

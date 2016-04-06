@@ -1,5 +1,5 @@
 Software Prototyping
-====================
+--------------------
 
 \begin{figure}[htbp]
     \centering
