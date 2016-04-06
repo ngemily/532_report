@@ -19,10 +19,6 @@ label a colour rather than just the label, which would have been a subtle
 grayscale.  When I had centroids of objects, I got my testbench to draw dots in
 the image by manipulating the "frame buffer" contents.
 
-One thing I regret not doing is setting up proper regression tests.  I did have
-a great setup, but not something I could run and parse the results for a
-pass/fail binary answer.
-
 ### Version Control
 
 I maintained only source files and compile scripts.
