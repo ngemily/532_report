@@ -146,10 +146,10 @@ window of the input with the kernel.
 
 #### Connected Components Analysis
 
-\begin{figure}[t!]
+\begin{figure}
     \centering
 
-    \begin{subfigure}[t]{0.5\textwidth}
+    \begin{subfigure}{0.3\linewidth}
     \centering
         \begin{tikzpicture}[x=.6cm,y=-.6cm]
 
@@ -164,9 +164,8 @@ window of the input with the kernel.
 
         \end{tikzpicture}
         \caption{4-connectivity}
-    \end{subfigure}
-
-    \begin{subfigure}[t]{0.5\textwidth}
+    \end{subfigure}%
+    \begin{subfigure}{0.3\linewidth}
         \centering
         \begin{tikzpicture}[x=.6cm,y=-.6cm]
 
