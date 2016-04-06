@@ -9,6 +9,20 @@ notes on image processing, debugging notes, block diagrams, schematics and
 thoughts.  I frequently referred to and annotated older notes.  Overall it
 helped me organize and develop my thoughts.
 
+### Verilog
+
+Throughout this project, I learned to use more features of Verilog.  This is by
+far the largest Verilog project I have taken on and I need to keep it modular
+and easy to work with.  I used parameters and modules to organize my design
+hierarchically.  I used macros in a header file to easily adjust bus widths and
+access debug features.  Eventually, I wanted my design to compile differently
+depending on if I was in simulation or compiling for hardware.  Here I used
+Modelsim's interface for defining macros at compile time.
+
+I hit a limitation with Modelsim ASE.  It doesn't support the use of
+SystemVerilog asserts, which was unfortunate as it seemed like a good way to
+introduce unit testing in my modules.
+
 ### Vivado
 
 #### RTL Viewer
@@ -28,18 +42,24 @@ stages as required.
 
 #### Testing
 
+After each change I used Modelsim to verify that my design was working.
+Overall, this testing gave me a high degree of confidence that my design would
+work in hardware.  My tests ran very quickly on small (550 x 300) bitmaps so my
+main design iteration time was actually comparable to working with software.
+
 #### Debugging
+
+Modelsim was my main debug tool.  I used it extensively when things weren't
+working.  Learning to work with the various features, such as saving wave views
+or using the jump to next change buttons really sped debugging along.
 
 #### Memory dump
 
-I used Modelsim ASE extensively.  I used it first and foremost to check the
-output whenever I was developing the core, in RTL sim.  This allowed me to check
-the correctness of my work with a high degree of confidence in seconds, without
-needing to fully compile my design.
-
-I used it extensively for debugging.  Looking at the signals change each cycle
-in some situations gave me good insight into what I was building.
-
+Some components of my design in involved keeping data in tables.  Sometimes the
+contents of these tables were the most useful information for debugging.  I used
+Modelsim to dump the contents to text files to browse through the contents
+easily.  This was especially helpful at times when the waveforms were
+unnecessary.
 
 ### Autossh
 
