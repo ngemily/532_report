@@ -2,10 +2,9 @@
 title: 'Individual Report'
 date: April 8, 2016
 author: Emily Ng
-toc: true
-csl: ieee.csl
 filter: pandoc-eqnos
 bibliography: main.bib
+classoption: oneside
 header-includes:
     - \usepackage{sty/myTitle}
     - \usepackage{fullpage}

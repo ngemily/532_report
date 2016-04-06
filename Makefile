@@ -6,11 +6,11 @@ TEX=$(OBJ).tex
 SECS := $(patsubst %.md,%.tex,$(wildcard src/*.md))
 
 all: $(SECS)
-	pandoc --standalone -o $(TEX) $(SRC)
+	pandoc --chapters --standalone -o $(TEX) $(SRC)
 	rubber --module=biber --pdf $(OBJ)
 
 %.tex : %.md
-	pandoc $< -o $@
+	pandoc --chapters $< -o $@
 
 preview:
 	qlmanage -p $(PDF) &> /dev/null
