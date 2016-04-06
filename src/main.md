@@ -24,6 +24,10 @@ header-includes:
 
 \mainmatter
 \include{me}
+    \include{responsibilities}
+    \include{tools}
+    \include{design}
+    \include{challenges}
 \include{reflection}
 \include{community}
 \include{xilinx}
