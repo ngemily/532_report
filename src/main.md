@@ -29,5 +29,9 @@ header-includes:
 \include{xilinx}
 \include{course}
 
+\appendix
+\include{sw}
+\include{sim}
+
 \backmatter
 \printbibliography[heading=bibintoc]
