@@ -1,30 +1,45 @@
 \ProvidesPackage{columbidaeTitle}
 \newcommand*{\project}[1]{\gdef\@project{#1}}
-\newcommand*{\@project}{Engineering Science Undergraduate Thesis}
+\newcommand*{\@project}{The Turret Master 5000}
 \newcommand*{\studentNo}[1]{\gdef\@studentNo{#1}}
 \newcommand*{\@studentNo}{999007024}
 
 \renewcommand*{\maketitle}{
 \begin{titlepage}
-    \centering
+\begin{center}
 
-    {\scshape\LARGE University of Toronto \par}
-    \vspace{1cm}
+\textup{\Large {\textbf{ECE532} Digital Systems Design} \\ [0.2in] Winter Semester 2016}\\[0.5in]
 
-    {\scshape\Large\@project\unskip\strut\par}
-    \vspace{1.5cm}
+% Title
+\hrule
+\vspace{0.2in}
+\LARGE \textbf{\@project}\\[0.1in]
+\Large\textsc{\@title}
+\vspace{0.2in}
+\hrule
 
-    {\huge\bfseries\@title\unskip\strut\par}
-    \vspace{2cm}
 
-    {\Large\itshape\@author\unskip\strut\par}
-    {\Large\@studentNo\unskip\strut\par}
-    \vfill
+\vspace{10em}
 
-    Group 3\par
-    \vfill
+% The current date (may be changed manually for when we hand document in?)
+\normalsize{\today}\\[0.2in]
+% Submitted by
+\normalsize \textit{Submitted by} \\[0.1in]
+\centering
+Emily Ng
 
-    {\large \@date\par}
+
+\vfill
+
+% Bottom of the page
+\normalsize
+University of Toronto\\
+%Toronto, ON, Canada \\
+\vspace{0.2cm}
+
+
+\end{center}
+
 \end{titlepage}
 }
 \endinput
