@@ -1,5 +1,6 @@
 Modelsim do file
 ----------------
+\label{app:do}
 
 ```
 file mkdir out

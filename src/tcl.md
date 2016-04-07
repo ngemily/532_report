@@ -1,5 +1,6 @@
-Vivado tcl
-----------
+Vivado compile script
+---------------------
+\label{app:tcl}
 
 ```
 set srcDir "src"

@@ -38,9 +38,10 @@ header-includes:
 \input{sw}
 \input{sim}
 
-# Workflow scripts
-\input{do}
+# Workflow
+\input{simlib}
 \input{tcl}
+\input{do}
 
 <!--
 # Schematics
