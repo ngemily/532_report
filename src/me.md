@@ -19,3 +19,7 @@ Include discussions of items like:
 - Anything else you spent your time on (related to the project :-)
 -->
 
+\input{responsibilities}
+\input{tools}
+\input{design}
+\input{challenges}

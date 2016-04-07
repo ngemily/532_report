@@ -26,10 +26,6 @@ header-includes:
 
 \mainmatter
 \include{me}
-    \include{responsibilities}
-    \include{tools}
-    \include{design}
-    \include{challenges}
 \include{reflection}
 \include{community}
 \include{xilinx}
@@ -38,18 +34,20 @@ header-includes:
 \appendix
 
 # Sample image processing output
-\include{sw}
-\include{sim}
+\input{sw}
+\input{sim}
 
 # Workflow scripts
-\include{do}
-\include{tcl}
+\input{do}
+\input{tcl}
 
+<!--
 # Schematics
 \includegraphics{schematics/cc.pdf}
 \includegraphics{schematics/moment_generator.pdf}
 \includegraphics{schematics/sobel.pdf}
 \includegraphics{schematics/top.pdf}
+-->
 
 \backmatter
 \printbibliography[heading=bibintoc]
