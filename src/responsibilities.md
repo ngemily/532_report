@@ -303,6 +303,12 @@ I_6 &= (3 n_{21} - n_{03}) (n_{30} + n_{12})
 \end{aligned}
 $$
 
+##### Comparison
+
+$$
+x = \sum_{i=0}^5 \frac{(I_i - I^\prime_i) ^ 2}{I_i I^\prime_i}
+$$
+
 ### Top Level
 
 \begin{figure}[htbp]

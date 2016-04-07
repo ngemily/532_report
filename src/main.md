@@ -11,6 +11,9 @@ header-includes:
     - \usepackage{tikz}
     - \usepackage{caption}
     - \usepackage{subcaption}
+    - \usepackage{bytefield}
+    - \usepackage{booktabs}
+    - \usepackage{longtable}
     - \usepackage[section]{placeins}
     - \usepackage[backend=biber]{biblatex}
     - \addbibresource{bib/main.bib}
@@ -34,14 +37,17 @@ header-includes:
 
 \appendix
 
+# IP Documentation
+\input{app_doc}
+
 # Sample image processing output
-\input{sw}
-\input{sim}
+\input{app_swout}
+\input{app_simout}
 
 # Workflow
-\input{simlib}
-\input{tcl}
-\input{do}
+\input{app_simlib}
+\input{app_tcl}
+\input{app_do}
 
 <!--
 # Schematics
