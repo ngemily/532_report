@@ -222,19 +222,18 @@ I_6 &= (3 n_{21} - n_{03}) (n_{30} + n_{12})
 \end{aligned}
 $$
 
+### Top Level
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{imgs/top.png}
+    \caption{Top level.}
+\end{figure}
 
-### Hardware Implementation
+### Debug Features
 
-#### Top Level
-<!--
-BD
--->
-
-#### Connected Components
-
-#### Debug Features
-
-<!--
-Diagram with mux and color table ROM.
--->
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.6]{imgs/output_modes.png}
+    \caption{Output modes}
+\end{figure}
