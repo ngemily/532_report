@@ -1,3 +1,5 @@
+# Sample image processing output
+
 Simulation results
 ------------------
 

@@ -104,7 +104,13 @@ edge.
              -3 & 0 &  +3
         \end{bmatrix}
         \ast A \\
-    G &= \left|G_x\right| + \left|G_y\right|
+    G &=
+        \left|G_x\right| + \left|G_y\right| \\
+    q &=
+        \begin{cases}
+            1 & \quad G \geq \text{threshold} \\
+            0 & \quad G <    \text{threshold}
+        \end{cases}
 \end{align}
 \label{eq:sobel}
 \end{subequations}
@@ -119,15 +125,23 @@ image kernel of all one's.  Then, if this count meets a threshold the input
 pixel is accepted as part of the outline, otherwise it is rejected and marked
 part of the background.
 
-$$
-count =
-    \begin{bmatrix}
-        1 & 1 & 1 & 1 & 1 \\
-        1 & 1 & 1 & 1 & 1 \\
-        1 & 1 & 1 & 1 & 1
-    \end{bmatrix}
-    \ast A
-$$
+\begin{subequations}
+\begin{align}
+    \text{count} &=
+        \begin{bmatrix}
+            1 & 1 & 1 & 1 & 1 \\
+            1 & 1 & 1 & 1 & 1 \\
+            1 & 1 & 1 & 1 & 1
+        \end{bmatrix}
+        \ast A \\
+    q &=
+        \begin{cases}
+            1 & \quad \text{count} \geq \text{threshold} \\
+            0 & \quad \text{count} <    \text{threshold}
+        \end{cases}
+\end{align}
+\label{eq:flood}
+\end{subequations}
 
 ### Connected Components Analysis
 
@@ -188,27 +202,6 @@ is processed, the pixels before it have already been labeled, as shown in Figure
 \ref{fig:cc_labels}.  The label for $p$ is selected based on the labels A
 through D.
 
-There are several possible scenarios:
-
-1. $p$ is a background pixel.
-
-    It is not given a label.
-
-2. $p$ is not a background pixel and A through D are background pixels.
-
-    $p$ is the start of a new object, so it gets a new label.
-
-3. $p$ is not a background pixel, and among A through D there is a single
-label.
-
-    $p$ is part of this object, it copies that label.
-
-4. $p$ is not a background pixel, and among A through D there are two or more
-labels.
-
-    These labels need to be merged.  $p$ is assigned the smallest of these
-    labels.
-
 
 \begin{figure}[htbp]
 \centering
@@ -228,10 +221,49 @@ analysis and $p$ is an input pixel from the binarized image.}
 \label{fig:cc_labels}
 \end{figure}
 
+There are several possible scenarios:
+
+1. $p$ is a background pixel.
+
+    It is not given a label.
+
+2. $p$ is not a background pixel and A through D are background pixels.
+
+    It is the start of a new object, so it gets a new label.
+
+3. $p$ is not a background pixel, and among A through D there is a single
+label.
+
+    It is part of this object, it copies that label.
+
+4. $p$ is not a background pixel, and among A through D there are two or more
+labels.
+
+    These labels need to be merged.  $p$ is assigned the smallest of these
+    labels.
+
+Scanning in this fashion, there comes a point where two regions may need to be
+merged.  Consider a 'U' shape.  The two arms of the 'U' will be labeled
+separately, and it is not until the bottom right of the 'U' that the two labels
+appear in the same neighbourhood.  At this point, the data for the two objects
+can be merged.  This is valid since the entries are just a summation of data
+points for each pixel considered to be part of the object.
+
 Bailey and Johnston \cite{cc} illustrate a single pass connected components
 analysis implementation on an FPGA.  This approach was followed with some
 simplifications.  The main components are shown in Figure \ref{fig:cc_pipeline}.
 There is a label selection module, a merge table, and a data table.
+
+The first two stages select the label for the current pixel.  The first stage is
+label selection.  This block is all combinational logic.  The next stage reads
+from the merge table.  It looks up the selected lable in the merge table which
+is in BRAM to see if this pixel really belongs to another label.  At the end of
+this stage, we know the correct label for this pixel.
+
+The next two stages update the data for this label.  The features being
+extracting from the objects are its moments, up to the third order.  In the
+third stage, the data for the resolved label is read out of the table, updated
+and in the fourth stage written back.
 
 \begin{figure}[htbp]
     \centering
@@ -241,13 +273,21 @@ There is a label selection module, a merge table, and a data table.
 \end{figure}
 
 
-### Location
+### Feature Extraction
+
+In the one pass method described by Bailey and Johnston \cite{cc}, data is
+extracted on the fly as the objects are being labeled.
+
+#### Location
 
 Locations of objects were found by finding the centre of mass of the outlines.
 As the objects were being labeled, their moments up to the third order were
 accumulated in a data table.
 
-The locations were then extracted using Equations (\ref{eq:xy}).
+The locations were then extracted using Equations (\ref{eq:xy}).  Due to the
+nature of division in hardware, this was left to the microblaze.  When it was
+attempted in hardware, it resulted in an astounding 75 ns delay on a single
+path.
 
 \begin{subequations}
 \begin{align}
@@ -258,56 +298,23 @@ The locations were then extracted using Equations (\ref{eq:xy}).
 \label{eq:xy}
 \end{subequations}
 
-### Moment Invariants
+#### Higher order moments
 
->This module was only prototyped in software.  For a discussion on the
->challenges of hardware implementation, see Appendix \ref{app:moments}.
+Higher order moments were extracted for use to characterize each object.  The
+characterization method was only prototyped in software.  Unfortunately, delays
+in the project schedule did not allow for this to be fully implemented in
+hardware.  For a discussion of the theory and software results, see Appendix
+\ref{app:moments}.
 
-Moment invariants were introduced by Hu in 1962 \cite{hu} as a means of uniquely
-identifying an object.  By this method, the outlines could be characterized as a
-unique fingerprint of seven numbers.  In a training phase, outlines of friends
-are committed to memory.  Then, the set of moments are calculated for each
-object detected and if they don't match any of the committed moments, it is
-deemed a foe.
-
-#### Translational invariants
-
-$$
-u_{ij} = \sum_x \sum_y (x - \bar{x}) ^ i (y - \bar{y}) ^ j p_{ij}
-$$
-
-#### Scale invariants
-$$
-n_{ij} = \frac{u_{ij}}{u_{00} ^ {1 + \frac{i + j}{2}}}
-$$
-
-##### Rotational invariants
-
-$$
-\begin{aligned}
-I_0 &= n_{20} + n_{02} \\
-I_1 &= (n_{20} - n_{02}) ^ 2 + 4 n_{11}^2 \\
-I_2 &= (n_{30} - 3 n_{12}) ^ 2 + (3 n_{21} - n_{03}) ^ 2 \\
-I_3 &= (n_{30} + n_{12}) ^ 2 + (n_{32} + n_{03}) ^ 2 \\
-I_4 &= (n_{30} - 3 n_{12}) (n_{30} + n_{12})
-        \left((n_{30} + n_{12}) ^ 2 - 3 (n_{21} + n_{03}) ^ 2\right) \\
-        &+ (3 n_{21} - n_{03}) (n_{21} + n_{03})
-        \left(3 (n_{30} + n_{12}) ^ 2 - (n_{21} + n_{03}) ^ 2\right) \\
-I_5 &= (n_{20} - n_{02})
-        \left((n_{30} + n_{12}) ^ 2 - (n_{21} + n_{03}) ^ 2\right) \\
-        &+ 4 n_{11} (n_{30} + n_{12}) (n_{21} + n_{03}) \\
-I_6 &= (3 n_{21} - n_{03}) (n_{30} + n_{12})
-        \left((n_{30} + n_{12}) ^ 2 - 3 (n_{21} + n_{03}) ^ 2 \right) \\
-        &- (n_{30} - 3 n_{12}) (n_{21} + n_{03})
-        \left(3 (n_{30} + n_{12}) ^ 2 - (n_{21} + n_{03}) ^ 2 \right)
-\end{aligned}
-$$
-
-##### Comparison
-
-$$
-x = \sum_{i=0}^5 \frac{(I_i - I^\prime_i) ^ 2}{I_i I^\prime_i}
-$$
+The multiplications themselves also required effort to close timing.  The
+highest order moment $\text{m}_{30}$, involves raising a number to the power of
+three, where the maximum input value is the frame width, 1280.  That means, at
+worse case, the computation is $1280^3 \approx 2x10^9$.  In order to break it
+down into smaller computations, it was pipelined so that the the next order
+moment was calculated at each stage using the result from the previous stage.
+For a block diagram, see Figure \ref{fig:mul} in Appendix \ref{app:bd}.  It
+takes three cycles, which conveniently matches the number of cycles until the
+data write stage in the connected components pipeline.
 
 ### Top Level
 

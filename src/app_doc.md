@@ -1,3 +1,5 @@
+# IP Documentation
+
 ## Register list
 
 | address | r/w | description      |
@@ -35,7 +37,7 @@ indicates read only register.
 
     \begin{subfigure}{\textwidth}
         \centering
-        \begin{bytefield}[endianness=big]{32}
+        \begin{bytefield}[bitwidth=1.3em,endianness=big]{32}
             \bitheader{31, 23, 15, 7, 0} \\
             \bitbox{8}{flood threshold}
             & \bitbox{8}{red threshold}
@@ -50,7 +52,7 @@ indicates read only register.
 
     \begin{subfigure}{\textwidth}
         \centering
-        \begin{bytefield}[endianness=big]{32}
+        \begin{bytefield}[bitwidth=1.3em,endianness=big]{32}
             \bitheader{31, 23, 15, 11, 0} \\
             \bitbox{8}{flood 2 threshold}
             & \bitbox{8}{input only}

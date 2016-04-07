@@ -37,11 +37,9 @@ header-includes:
 
 \appendix
 
-# IP Documentation
 \input{app_doc}
-
-# Sample image processing output
-\input{app_swout}
+\input{app_bd}
+\input{app_moments}
 \input{app_simout}
 
 # Workflow
