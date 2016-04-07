@@ -1,5 +1,6 @@
 Software Prototyping
 --------------------
+\label{app:moments}
 
 \begin{figure}[htbp]
     \centering
