@@ -16,6 +16,7 @@ header-includes:
     - \addbibresource{bib/main.bib}
 ---
 
+\renewcommand{\chaptername}{Section}
 \renewcommand{\bibname}{References}
 
 \frontmatter
