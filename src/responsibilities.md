@@ -34,6 +34,8 @@ Grayscale was calculated using the ITU-R Rec. 601
 
 $$ I = 0.299 R + 0.587 G + 0.114 B $$
 
+### Sobel
+
 #### Image Filter
 
 Image filters can produce interesting effects, such as blur, sharpen, emboss, or
@@ -44,7 +46,7 @@ defines the resultant pixel as a weighted summation of the pixels in the window
 surrounding it.  The output is computed by convolving at each input pixel a
 window of the input with the kernel.
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[x=0.4cm,y=-0.4cm]
 
@@ -79,9 +81,6 @@ window of the input with the kernel.
     \caption{Image kernel convolution.}
     \label{fig:kernel}
 \end{figure}
-
-
-### Sobel
 
 The Sobel operator is an image filter designed to extract edges by computing the
 derivative at each pixel.  Gradients correlate well with edges because an even
@@ -132,7 +131,14 @@ $$
 
 ### Connected Components Analysis
 
-\begin{figure}
+Connected components analysis is a method to extract information about objects
+in a _binarized_ image.  _Connectivity_, illustrated in Figure
+\ref{fig:connectivity}, is defined loosely as pixels that are touching each
+other.  A _binarized_ image is an image where there are only two pixel values,
+which represent background or non-background.  This method was used to locate
+the different objects in view.
+
+\begin{figure}[htbp]
     \centering
 
     \begin{subfigure}{0.3\linewidth}
@@ -176,13 +182,6 @@ $$
     \label{fig:connectivity}
 \end{figure}
 
-Connected components analysis is a method to extract information about objects
-in a _binarized_ image.  _Connectivity_, illustrated in Figure
-\ref{fig:connectivity}, is defined loosely as pixels that are touching each
-other.  A _binarized_ image is an image where there are only two pixel values,
-which represent background or non-background.  This method was used to locate
-the different objects in view.
-
 The analysis works by scanning the image in raster order, scanning each row from
 left right from the top to the bottom of the image.  At the time that pixel $p$
 is processed, the pixels before it have already been labeled, as shown in Figure
@@ -211,7 +210,7 @@ labels.
     labels.
 
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=-1cm]
     \draw (0, 0) grid (3, 2);
@@ -222,6 +221,7 @@ labels.
     \node at (0.5, 1.5) {D};
     \node at (1.5, 1.5) {$p$};
 \end{tikzpicture}
+\captionsetup{width=0.8\textwidth}
 \caption{Neighbourhood of input pixel $p$.  Labels A through D are the labels of
 the pixels that have already been processed through connected components
 analysis and $p$ is an input pixel from the binarized image.}
