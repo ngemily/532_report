@@ -22,8 +22,8 @@ header-includes:
     - \addbibresource{bib/main.bib}
     - \geometry{
           top=1in,
-          inner=1in,
-          outer=1in,
+          inner=1.5in,
+          outer=1.5in,
           bottom=1in,
           headheight=3ex,
           headsep=2ex,
