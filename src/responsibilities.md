@@ -27,6 +27,8 @@ This was performed in the following steps:
 - connected components analysis
 - data extraction
 
+The full top level diagram showing all these components is available in Figure
+\ref{fig:top} in Appendix \ref{app:bd}.
 
 ### Grayscale
 
@@ -114,6 +116,19 @@ edge.
 \end{align}
 \label{eq:sobel}
 \end{subequations}
+
+Performing the computation requires access to a 3 x 3 neighbourhood of pixels.
+This requires two line buffers to access the pixels from the previous two rows,
+shown in Figure \ref{fig:sobel}.  Once two rows have been filled up, the output
+can be computed at one clock cycle per pixel.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{imgs/bd_sobel.png}
+    \caption{Generating the pixel array for Sobel computation.}
+    \label{fig:sobel}
+\end{figure}
+
 
 ### Flooding
 
@@ -267,7 +282,7 @@ and in the fourth stage written back.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{imgs/pipeline.png}
+    \includegraphics[width=\textwidth]{imgs/bd_cc_pipeline.png}
     \caption{Connected components pipeline.}
     \label{fig:cc_pipeline}
 \end{figure}
@@ -315,14 +330,6 @@ moment was calculated at each stage using the result from the previous stage.
 For a block diagram, see Figure \ref{fig:mul} in Appendix \ref{app:bd}.  It
 takes three cycles, which conveniently matches the number of cycles until the
 data write stage in the connected components pipeline.
-
-### Top Level
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.45]{imgs/top.png}
-    \caption{Top level.}
-\end{figure}
 
 ### Debug Features
 

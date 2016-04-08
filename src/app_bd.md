@@ -10,8 +10,17 @@ Multiplication for Moments
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.45]{imgs/multiply.png}
+    \includegraphics[scale=0.35]{imgs/bd_multiply.png}
     \caption{Pipeline for calculating moment at pixel $p$.}
     \label{fig:mul}
 \end{figure}
 
+Top
+---
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.37]{imgs/bd_top.png}
+    \caption{Top level, highlighting line buffer structure.}
+    \label{fig:top}
+\end{figure}
