@@ -270,6 +270,13 @@ analysis implementation on an FPGA.  This approach was followed with some
 simplifications.  The main components are shown in Figure \ref{fig:cc_pipeline}.
 There is a label selection module, a merge table, and a data table.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/bd_cc_pipeline.png}
+    \caption{Connected components pipeline.}
+    \label{fig:cc_pipeline}
+\end{figure}
+
 The first two stages select the label for the current pixel.  The first stage is
 label selection.  This block is all combinational logic.  The next stage reads
 from the merge table.  It looks up the selected lable in the merge table which
@@ -280,13 +287,6 @@ The next two stages update the data for this label.  The features being
 extracting from the objects are its moments, up to the third order.  In the
 third stage, the data for the resolved label is read out of the table, updated
 and in the fourth stage written back.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{imgs/bd_cc_pipeline.png}
-    \caption{Connected components pipeline.}
-    \label{fig:cc_pipeline}
-\end{figure}
 
 
 ### Feature Extraction
