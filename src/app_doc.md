@@ -32,7 +32,7 @@
 : Table of AXI registers.  'w' indicates read and write register, 'r'
 indicates read only register.
 
-\begin{figure}
+\begin{figure}[htbp]
     \centering
 
     \begin{subfigure}{\textwidth}

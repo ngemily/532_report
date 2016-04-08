@@ -10,7 +10,7 @@ Notebook
     \end{subfigure}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[htbp]
     \ContinuedFloat
     \begin{subfigure}{0.5\textwidth}
         \centering
