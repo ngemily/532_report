@@ -14,10 +14,34 @@ header-includes:
     - \usepackage{bytefield}
     - \usepackage{booktabs}
     - \usepackage{longtable}
+    - \usepackage{fancyhdr}
+    - \usepackage{layout}
     - \usepackage[section]{placeins}
     - \usepackage[backend=biber]{biblatex}
+    - \usepackage{geometry}
     - \addbibresource{bib/main.bib}
+    - \geometry{
+          top=1in,
+          inner=1in,
+          outer=1in,
+          bottom=1in,
+          headheight=3ex,
+          headsep=2ex,
+      }
 ---
+\setlength\headheight{33pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Individual Report}
+\fancyhead[RE,LO]{ECE532}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\rightmark}
+<!--
+\rhead{Individual Report}
+\lhead{ECE532}
+\cfoot{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt (ie make footer rule non-zero)
+-->
 
 \renewcommand{\chaptername}{Section}
 \renewcommand{\bibname}{References}
