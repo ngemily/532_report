@@ -22,8 +22,8 @@ the image by manipulating the "frame buffer" contents.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{imgs/tb.png}
-    \caption{Testbench that feeds a bitmap to the core and writes the output to
-    a bitmap.}
+    \caption[Testbench setup.]{Testbench that feeds a bitmap to the core and
+    writes the output to a bitmap.}
     \label{fig:tb}
 \end{figure}
 
