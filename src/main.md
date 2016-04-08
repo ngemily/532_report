@@ -24,7 +24,7 @@ header-includes:
           top=1in,
           inner=1.5in,
           outer=1.5in,
-          bottom=1in,
+          bottom=1.25in,
           headheight=3ex,
           headsep=2ex,
       }
