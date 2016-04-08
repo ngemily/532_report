@@ -162,10 +162,10 @@ part of the background.
 
 Connected components analysis is a method to extract information about objects
 in a _binarized_ image.  _Connectivity_, illustrated in Figure
-\ref{fig:connectivity}, is defined loosely as pixels that are touching each
-other.  A _binarized_ image is an image where there are only two pixel values,
-which represent background or non-background.  This method was used to locate
-the different objects in view.
+\ref{fig:connectivity}, is defined as pixels that (1) share edges or (2) share
+edges or vertices.  A _binarized_ image is an image where there are only two
+pixel values, which represent background or non-background.  This method was
+used to locate the different objects in view.
 
 \begin{figure}[htbp]
     \centering
