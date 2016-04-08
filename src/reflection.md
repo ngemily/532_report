@@ -7,7 +7,8 @@ weaknesses? From the perspective of your own experience, what did you need to
 learn to do the project. How did you do that learning?
 -->
 
-### Team
+Team
+----
 
 Our team is fairly diverse within ECE.  Together we have significant background
 (for undergrad students) in circuit design, embedded software, FPGA CAD flow and
@@ -32,12 +33,14 @@ the laser and Roberto worked with me to interface with the object detection IP.
 This division allowed us to work pretty well individually for a few weeks and
 perform integration smoothly.
 
-### Testing in the real environment
+Testing in the real environment
+-------------------------------
 
 My greatest oversight in this project was testing both the software prototype
 and hardware simulation on clean images only, and not camera images.
 
-### Regression testing
+Regression testing
+------------------
 
 One thing I would have done differently is set up regression tests.  Ideally, I
 would have a set of tests run nightly and automatic pass/fail reporting with
@@ -59,7 +62,8 @@ always tested on smaller images because a full 720p image takes almost ten
 minutes to run in RTL sim.  Had I ran tests on full resolution images nightly, I
 would have caught that before going to hardware.
 
-### Approach to image processing
+Approach to image processing
+----------------------------
 
 At the beginning of this project, I had no idea about anything related to
 computer vision.  Since the focus of the course is hardware design, I didn't
