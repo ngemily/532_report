@@ -32,14 +32,12 @@ the laser and Roberto worked with me to interface with the object detection IP.
 This division allowed us to work pretty well individually for a few weeks and
 perform integration smoothly.
 
-### Individual
-
-#### Testing in the real environment
+### Testing in the real environment
 
 My greatest oversight in this project was testing both the software prototype
 and hardware simulation on clean images only, and not camera images.
 
-#### Regression testing
+### Regression testing
 
 One thing I would have done differently is set up regression tests.  Ideally, I
 would have a set of tests run nightly and automatic pass/fail reporting with
@@ -60,3 +58,34 @@ reported to me discrepancies that I didn't notice until later.  In particular, I
 always tested on smaller images because a full 720p image takes almost ten
 minutes to run in RTL sim.  Had I ran tests on full resolution images nightly, I
 would have caught that before going to hardware.
+
+### Approach to image processing
+
+At the beginning of this project, I had no idea about anything related to
+computer vision.  Since the focus of the course is hardware design, I didn't
+want to spend too long researching and prototyping.  I learned most of what I
+needed from OpenCV tutorials and following the topics introduced in further
+depth.  I was able to prototype ideas very quickly using the OpenCV library
+\cite{opencv}.  While I was doing my research, I tried to stick with algorithms
+that were easy to understand and that were hardware friendly.
+
+Charles introduced Viola Jones object detection in a little more detail than
+discussed in lecture.  I dismissed it as being too complicated because of the
+artificial intelligence component.  I did not think I would be able to
+understand and implement and then train a Viola Jones detection module in the
+timeframe of this project, primarily due to my lack of experience with training
+a neural network.  In retrospect, the approach I chose was not all that easy to
+implement in hardware because of the many memory accesses required and I'm sure
+I would have gotten the help I needed to get Viola Jones.  Still, I went with
+the more classical methods of computer vision where I know exactly what is being
+calculated for each pixel.
+
+At the end of this process, I learned just as much about computer vision as I
+did hardware design.  I also learned that new and different, possibly better
+ways of doing things are always on the horizon and it's best to keep an open
+mind.  As Jason Foster would say to us in first year, keep strong opinions,
+weakly held.  Such as it is that neural nets are taking over in computer vision,
+high level synthesis is on the rise in the digital design world.  I would say
+that I learned a lot here on extracting image features and designing at the RTL
+level, but I wouldn't be opposed to continuing to pursue these topics in
+slightly different avenues.
