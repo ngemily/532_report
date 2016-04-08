@@ -32,14 +32,14 @@ header-includes:
 \setlength\headheight{33pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{Individual Report}
-\fancyhead[RE,LO]{ECE532}
-\fancyfoot[CE,CO]{\leftmark}
-\fancyfoot[LE,RO]{\rightmark}
+\fancyhead[LE,RO]{\leftmark}
+\fancyhead[RE,LO]{\rightmark}
+\cfoot{\thepage}
 <!--
+\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[LE,RO]{\thepage}
 \rhead{Individual Report}
 \lhead{ECE532}
-\cfoot{\thepage}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt (ie make footer rule non-zero)
 -->
 
