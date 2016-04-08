@@ -7,7 +7,8 @@ My most invaulable possession relating to this project is my notebook.  In this
 notebook I kept my milestone reports, meeting notes, notes on digital logic,
 notes on image processing, debugging notes, block diagrams, schematics and
 thoughts.  I frequently referred to and annotated older notes.  Overall it
-helped me organize and develop my thoughts.
+helped me organize and develop my thoughts.  Select pages from my notebook can
+be found in Appendix \ref{app:notebook}.
 
 ### Verilog
 
