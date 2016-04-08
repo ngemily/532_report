@@ -18,6 +18,8 @@ deemed a foe.
 Invariants
 ----------
 
+The invariants used are listed below.
+
 ### Translational invariants
 
 $$
@@ -54,14 +56,28 @@ $$
 Comparison
 ----------
 
+The sum of square differences was used to calculate a difference score to
+determine how different a given image is from a known image.  The smaller the
+score, the more similar the images.  A score of 0 indicates that the images are
+identical.
+
 $$
 x = \sum_{i=0}^5 \frac{(I_i - I^\prime_i) ^ 2}{I_i I^\prime_i}
 $$
 
+\newpage
+
 Software Prototyping
 --------------------
+
+This method was reasonably successfuly in software.  It could correctly identify
+scaled, shifted and rotated images.  It is not designed to match skewed images.
+A sample image annotated with difference scores is shown in Figure
+\ref{fig:sw_moments}.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.4,trim={0 0 0 0},clip]{imgs/sw_moments.png}
     \caption{Moments}
+    \label{fig:sw_moments}
 \end{figure}
