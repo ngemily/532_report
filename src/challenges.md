@@ -15,7 +15,7 @@ don't even think about when writing software:
 2. Uniform latency across all operations
 
 That is, each line that I write is executed in order and each result is
-available on the next line.  As I write my verilog, I need to always think
+available on the next line.  As I write my Verilog, I need to always think
 instead about what circuit I am describing.  I need to consider that
 combinational logic happens all at once, in parallel.  I need to consider that
 results that pass through registers are not available until the following clock

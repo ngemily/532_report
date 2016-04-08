@@ -3,7 +3,7 @@ Tools
 
 ### Pen and Paper
 
-My most invaulable possession relating to this project is my notebook.  In this
+My most invaluable possession relating to this project is my notebook.  In this
 notebook I kept my milestone reports, meeting notes, notes on digital logic,
 notes on image processing, debugging notes, block diagrams, schematics and
 thoughts.  I frequently referred to and annotated older notes.  Overall it
@@ -66,6 +66,6 @@ unnecessary.
 
 Using autossh, I never dropped an ssh tunnel connection (as opposed to my team
 mates using Putty).  The only times I lost a connection was when the remote went
-down.  Droppend connections became a great source of annoyance to my teammates.
+down.  Dropped connections became a great source of annoyance to my teammates.
 This was important to me because it  was one more source of workflow friction
 that I avoided easily.

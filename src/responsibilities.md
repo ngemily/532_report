@@ -230,9 +230,10 @@ through D.
     \node at (1.5, 1.5) {$p$};
 \end{tikzpicture}
 \captionsetup{width=0.8\textwidth}
-\caption[Neighbourhood of input pixel $p$.]{Neighbourhood of input pixel $p$.  Labels A through D are the labels of
-the pixels that have already been processed through connected components
-analysis and $p$ is an input pixel from the binarized image.}
+\caption[Neighbourhood of input pixel $p$.]{Neighbourhood of input pixel $p$.
+Labels A through D are the labels of the pixels that have already been processed
+through connected components analysis and $p$ is an input pixel from the
+binarized image.}
 \label{fig:cc_labels}
 \end{figure}
 

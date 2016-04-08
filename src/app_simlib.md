@@ -26,8 +26,8 @@ Run the following command in Vivado's tcl console[^1]:
 
     compile_simlib -simulator modelsim -family artix7 -library unisim -language verilog
 
-After synthesis or implementation, export the the Verilog netlist.  This can be
-done from the Vivado console using:
+After synthesis or implementation, export the Verilog netlist.  This can be done
+from the Vivado console using:
 
     reset_run synth_1
     launch_runs synth_1

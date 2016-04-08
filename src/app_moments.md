@@ -70,9 +70,9 @@ $$
 Software Prototyping
 --------------------
 
-This method was reasonably successfuly in software.  It could correctly identify
-scaled, shifted and rotated images.  It is not designed to match skewed images.
-A sample image annotated with difference scores is shown in Figure
+This method was reasonably successfully in software.  It could correctly
+identify scaled, shifted and rotated images.  It is not designed to match skewed
+images.  A sample image annotated with difference scores is shown in Figure
 \ref{fig:sw_moments}.
 
 \begin{figure}[htbp]
