@@ -13,3 +13,4 @@ report, but also send me a zip/tar file of the example and the document as well
 so that I can post it.
 -->
 
+I answered any questions on Piazza where I felt knowledgeable enough to answer.
