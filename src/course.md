@@ -50,6 +50,8 @@ not you've hit this week's milestone and consider also the aim for the coming
 week.  They also gave Charles a chance to look over our progress and challenges
 before meeting in the lab which made the lab session more valuable.
 
+My milestone reports are available in Appendix \ref{app:milestones}.
+
 ### TAs
 
 It was really great to have very knowledgeable and helpful TAs.  We (my team)

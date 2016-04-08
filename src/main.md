@@ -66,6 +66,7 @@ header-includes:
 \input{app_moments}
 \input{app_simout}
 \input{app_notebook}
+\input{app_milestones}
 
 # Workflow
 \input{app_simlib}
